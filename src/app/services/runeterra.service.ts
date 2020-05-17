@@ -8,11 +8,13 @@ import { flatMap } from "rxjs/operators";
   providedIn: "root",
 })
 export class RuneterraService {
+  endpoint: string = "/api";
   constructor(private http: HttpClient) {}
 
   testingApi() {
     console.log("entered test api");
-    let apiUrl = "http://127.0.0.1:21337/static-decklist";
+
+    let apiUrl = "/static";
     let apiUrlPosition = "/positional-rectangles";
     let apiGameResult = "/game-result";
     // return this.http.get(apiUrl).subscribe((res) => {
@@ -20,7 +22,7 @@ export class RuneterraService {
     // });
 
     return interval(3000)
-      .pipe(flatMap(() => this.http.get(apiUrl)))
+      .pipe(flatMap(() => this.http.get(this.endpoint + "/static")))
       .subscribe((data) => {
         console.log(data);
       });

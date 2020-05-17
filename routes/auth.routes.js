@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt");
 const router = express.Router();
 const userSchema = require("../models/User");
 const isPortReachable = require("is-port-reachable");
+const request = require("request");
 
 // Sign-up
 router.post("/register-user", (req, res, next) => {
@@ -139,6 +140,18 @@ async () => {
 router.route("http://127.0.0.1:21337/static-decklist").get((req, res, next) => {
   res.set("Access-Control-Allow-Origin", "*");
   next();
+});
+
+// router.get('/staticting', function(req, res, next){
+//   request({
+//     uri: 'http://127.0.0.1:21337/static-decklist'
+//   })
+// }
+
+router.route("/static").get((req, res, next) => {
+  request({
+    uri: "http://127.0.0.1:21337/static-decklist",
+  }).pipe(res);
 });
 
 module.exports = router;
