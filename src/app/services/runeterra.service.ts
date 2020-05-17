@@ -19,8 +19,8 @@ export class RuneterraService {
     //   console.log("res", res);
     // });
 
-    return interval(60 * 1000)
-      .pipe(flatMap(() => this.http.get(apiGameResult)))
+    return interval(10 * 1000)
+      .pipe(flatMap(() => this.http.get(apiUrl)))
       .subscribe((data) => {
         console.log(data);
       });
