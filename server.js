@@ -35,7 +35,7 @@ app.use(
   })
 );
 
-const whitelist = ["http://127.0.0.1:21337"]; // list of allow domain
+const whitelist = ["http://127.0.0.1"]; // list of allow domain
 
 const corsOptions = {
   origin: function (origin, callback) {
