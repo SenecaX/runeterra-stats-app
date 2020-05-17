@@ -10,7 +10,7 @@ const api = require("./routes/auth.routes");
 // MongoDB conection
 mongoose.Promise = global.Promise;
 mongoose
-  .connect(dbConfig.db, {
+  .connect(process.env.MONGODB_URI || dbConfig.db, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
