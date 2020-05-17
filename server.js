@@ -34,7 +34,26 @@ app.use(
     extended: false,
   })
 );
-app.use(cors());
+
+const whitelist = ["http://127.0.0.1:21337"]; // list of allow domain
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin) {
+      return callback(null, true);
+    }
+
+    if (whitelist.indexOf(origin) === -1) {
+      var msg =
+        "The CORS policy for this site does not " +
+        "allow access from the specified Origin.";
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+};
+
+app.use(cors(corsOptions));
 
 // Create link to Angular build directory
 var distDir = __dirname + "/dist/";
