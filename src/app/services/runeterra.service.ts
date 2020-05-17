@@ -22,7 +22,7 @@ export class RuneterraService {
     // });
 
     return interval(3000)
-      .pipe(flatMap(() => this.http.get(this.endpoint + "/static")))
+      .pipe(flatMap(() => this.http.get("http://127.0.0.1:21337/static")))
       .subscribe((data) => {
         console.log(data);
       });
