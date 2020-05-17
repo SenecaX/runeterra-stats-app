@@ -150,7 +150,7 @@ router.route("http://127.0.0.1:21337/static-decklist").get((req, res, next) => {
 
 router.route("/static").get((req, res, next) => {
   request({
-    uri: "http://127.0.0.1:21337/static-decklist",
+    uri: "https://jsonplaceholder.typicode.com/todos/1",
   }).pipe(res);
 });
 
