@@ -12,14 +12,14 @@ export class RuneterraService {
 
   testingApi() {
     console.log("entered test api");
-    let apiUrl = "/static-decklist";
+    let apiUrl = "http://127.0.0.1:21337/static-decklist";
     let apiUrlPosition = "/positional-rectangles";
     let apiGameResult = "/game-result";
     // return this.http.get(apiUrl).subscribe((res) => {
     //   console.log("res", res);
     // });
 
-    return interval(10 * 1000)
+    return interval(3000)
       .pipe(flatMap(() => this.http.get(apiUrl)))
       .subscribe((data) => {
         console.log(data);
