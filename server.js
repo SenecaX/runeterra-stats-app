@@ -36,6 +36,10 @@ app.use(
 );
 app.use(cors());
 
+// Create link to Angular build directory
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
+
 // Serve static resources
 app.use("/public", express.static("public"));
 
